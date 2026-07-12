@@ -8,6 +8,7 @@ import java.util.Properties;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
@@ -32,6 +33,14 @@ public class BrowserActions {
 		InputStream input=BrowserActions.class.getClassLoader().getResourceAsStream("config.properties");
 		props.load(input);
 		return props.getProperty(key);
+	}
+	
+	public static void highlightElement(Locator element) {
+	    element.evaluate("el => { el.style.outline = '3px solid red'; el.style.outlineOffset = '2px'; }");
+	}
+
+	public static void removeHighlight(Locator element) {
+	    element.evaluate("el => { el.style.outline = ''; el.style.outlineOffset = ''; }");
 	}
 	
 }
