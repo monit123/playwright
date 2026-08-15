@@ -25,5 +25,7 @@ public class loginTest extends BaseTest{
 		reportutils.logStep("Home page is displayed", Status.INFO);
 		loginpage.login();
 		reportutils.logStep("Login window is displayed", Status.INFO);
+		loginpage.signup();
+		reportutils.logStep("Login window is displayed", Status.INFO);
 	}
 }
