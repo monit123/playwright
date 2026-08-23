@@ -13,7 +13,7 @@ import Utils.BrowserActions;
 import Utils.ReportUtils;
 
 public class loginTest extends BaseTest{
-	@Test
+	@Test (groups= {"Smoke"})
 	public void loginTest1() throws IOException, InterruptedException {
 		BrowserActions browserActions=new BrowserActions(this.page);
 		loginPage loginpage=new loginPage(this.page);
