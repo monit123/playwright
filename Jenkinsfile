@@ -1,5 +1,17 @@
 pipeline {
     agent any
+    parameters{
+		choice(
+			name: 'TEST_SUITE'
+			choices: ['SMOKE','SANITY','REGRESSION']
+			description: 'Select the test group to execute'
+		)
+		choice(
+			name : 'BROWSER'
+			choices: ['Chrome','Edge']
+			description: 'Select the browser'
+		)
+	}
 
     tools {
         jdk 'JDK25'
@@ -15,9 +27,9 @@ pipeline {
                 bat 'git --version'
             }
         }
-        stage('Buidl and Test'){
+        stage('Build and Test'){
 			steps{
-				bat 'mvn clean test'
+				bat "mvn clean test -DtestSuite=${params.TEST_SUITE} -Dbrowser=${params.BROWSER}"
 			}
 		}
     }
