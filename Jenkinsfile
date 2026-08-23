@@ -15,5 +15,10 @@ pipeline {
                 bat 'git --version'
             }
         }
+        stage('Buidl and Test'){
+			steps{
+				bat 'mvn clean test'
+			}
+		}
     }
 }
